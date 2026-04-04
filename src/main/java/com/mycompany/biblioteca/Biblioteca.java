@@ -41,9 +41,9 @@ public class Biblioteca {
                   if(op1 == 1){
                     service.CadastrarLivro();
                  }else if(op1 == 2){
-                    //função listar livros 
-                 }else if(op == 3){
-                    //função buscar livros 
+                    service.ListarLivros();
+                 }else if(op1 == 3){
+                    service.BuscarLivros();
                  }else if (op1 == 4){
                      loopBreak1 = true;
                      break;
@@ -52,6 +52,7 @@ public class Biblioteca {
                  }
                   if(loopBreak) break;
                  }
+                 break;
                  
                 case 2:
                  boolean loopBreak2 = false;

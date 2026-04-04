@@ -19,6 +19,25 @@ public class Model {
        protected String editora;
        protected int anoPublicacao;
        
+       public int getID(){
+           return ID;
+       }
+       public String getTitulo(){
+           return titulo;
+       }
+       public String getGenero(){
+           return genero;
+       }
+       public String getAutor(){
+           return autor;
+       }
+       public String getEditora(){
+           return editora;
+       } 
+       public int getAno(){
+           return anoPublicacao;
+       }
+       
        public Livros(int ID, String titulo, String genero, String autor, String editora, int anoPublicacao){
         this.ID = ID;
         this.titulo = titulo;
@@ -31,7 +50,7 @@ public class Model {
      
        @Override
        public String toString(){
-           return "" + ID + "" + titulo + "" + genero + "" + autor + "" + editora + "" + anoPublicacao;
+           return "Livro{ " + ID + ", " + titulo + ", " + genero + ", " + autor + ", " + editora + ", " + anoPublicacao + " }";
        }
        
     }
