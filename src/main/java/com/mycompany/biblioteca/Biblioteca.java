@@ -14,6 +14,7 @@ public class Biblioteca {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Services service = new Services();
         boolean validacao = true;
         boolean loopBreak = false;
         
@@ -38,7 +39,7 @@ public class Biblioteca {
                   int op1 = sc.nextInt();  
                   
                   if(op1 == 1){
-                    //função cadastrar livros 
+                    service.CadastrarLivro();
                  }else if(op1 == 2){
                     //função listar livros 
                  }else if(op == 3){
