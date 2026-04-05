@@ -40,6 +40,7 @@ public class Services {
            
            
            
+           
            Model.Livros Objeto = new Model().new Livros(id, Titulo, Genero, Autor, Editora, Ano);
            instancia.salvarLivro(Objeto);
            
@@ -48,13 +49,150 @@ public class Services {
           
     }
     
+    public void ImprimirObjeto(){
+        
+    } 
+    
     public void ListarLivros(){
-        System.out.println("" + instancia.listaLivro); 
+        boolean controle = false;
+        System.out.println("Escolha o filtro: ");
+        System.out.println("\n| Titulo | Genero | Autor | Editora | Ano |");
+        String escolha = sc.nextLine();
+        
+        switch (escolha){
+            
+            case "Titulo":
+                
+                System.out.println("Insira o titulo: ");
+                String Titulo = sc.nextLine();
+                
+                for (int i = 0; i < instancia.listaLivro.size(); i++){
+                    String Valor = instancia.listaLivro.get(i).getTitulo();
+                    
+                    if(Valor.equals(Titulo)){
+                         System.out.println("Livro{ " + instancia.listaLivro.get(i).getID()
+                                              + ", " + instancia.listaLivro.get(i).getTitulo() 
+                                              + ", " + instancia.listaLivro.get(i).getGenero() 
+                                              + ", " + instancia.listaLivro.get(i).getAutor() 
+                                              + ", " + instancia.listaLivro.get(i).getEditora() 
+                                              + ", " + instancia.listaLivro.get(i).getAno() + " }");
+                         controle = true;
+                      }
+                  }
+                if (controle == false){
+                    System.out.println("Nenhum livro encontrado");
+                }
+                
+                break;
+                
+            case "Genero":
+                
+                System.out.println("Insira o genero: ");
+                String Genero = sc.nextLine();
+                
+               for (int i = 0; i < instancia.listaLivro.size(); i++){
+                    String Valor = instancia.listaLivro.get(i).getGenero();
+                    
+                    if(Valor.equals(Genero)){
+                         System.out.println("Livro{ " + instancia.listaLivro.get(i).getID()
+                                              + ", " + instancia.listaLivro.get(i).getTitulo() 
+                                              + ", " + instancia.listaLivro.get(i).getGenero() 
+                                              + ", " + instancia.listaLivro.get(i).getAutor() 
+                                              + ", " + instancia.listaLivro.get(i).getEditora() 
+                                              + ", " + instancia.listaLivro.get(i).getAno() + " }");
+                         controle = true;
+                      }
+                  } 
+               
+               if (controle == false){
+                    System.out.println("Nenhum livro encontrado");
+                }
+               
+               break;
+               
+            case "Autor":
+                
+                System.out.println("Insira o autor: ");
+                String Autor = sc.nextLine();
+                
+               for (int i = 0; i < instancia.listaLivro.size(); i++){
+                    String Valor = instancia.listaLivro.get(i).getAutor();
+                    
+                    if(Valor.equals(Autor)){
+                         System.out.println("Livro{ " + instancia.listaLivro.get(i).getID()
+                                              + ", " + instancia.listaLivro.get(i).getTitulo() 
+                                              + ", " + instancia.listaLivro.get(i).getGenero() 
+                                              + ", " + instancia.listaLivro.get(i).getAutor() 
+                                              + ", " + instancia.listaLivro.get(i).getEditora() 
+                                              + ", " + instancia.listaLivro.get(i).getAno() + " }");
+                         controle = true;
+                      }
+                  } 
+               
+               if (controle == false){
+                    System.out.println("Nenhum livro encontrado");
+                }   
+               
+               break;
+               
+            case "Editora":
+                System.out.println("Insira o editor(a): ");
+                String Editora = sc.nextLine();
+                
+               for (int i = 0; i < instancia.listaLivro.size(); i++){
+                    String Valor = instancia.listaLivro.get(i).getEditora();
+                    
+                    if(Valor.equals(Editora)){
+                         System.out.println("Livro{ " + instancia.listaLivro.get(i).getID()
+                                              + ", " + instancia.listaLivro.get(i).getTitulo() 
+                                              + ", " + instancia.listaLivro.get(i).getGenero() 
+                                              + ", " + instancia.listaLivro.get(i).getAutor() 
+                                              + ", " + instancia.listaLivro.get(i).getEditora() 
+                                              + ", " + instancia.listaLivro.get(i).getAno() + " }");
+                         controle = true;
+                      }
+                  } 
+               
+               if (controle == false){
+                    System.out.println("Nenhum livro encontrado");
+                }
+                break;
+               
+            case "Ano":
+                
+                System.out.println("Insira o ano: ");
+                int Ano = sc.nextInt();
+                
+               for (int i = 0; i < instancia.listaLivro.size(); i++){
+                    int Valor = instancia.listaLivro.get(i).getAno();
+                    
+                    if(Valor == Ano){
+                         System.out.println("Livro{ " + instancia.listaLivro.get(i).getID()
+                                              + ", " + instancia.listaLivro.get(i).getTitulo() 
+                                              + ", " + instancia.listaLivro.get(i).getGenero() 
+                                              + ", " + instancia.listaLivro.get(i).getAutor() 
+                                              + ", " + instancia.listaLivro.get(i).getEditora() 
+                                              + ", " + instancia.listaLivro.get(i).getAno() + " }");
+                         controle = true;
+                      }
+                  } 
+               
+               if (controle == false){
+                    System.out.println("Nenhum livro encontrado");
+                }
+               
+               break;
+               
+            default:
+                System.out.println("Insira uma opção valida");
+    }       
+       
+        
     }
     
     public void BuscarLivros(){
         System.out.println("Como deseja buscar o livro: ");
-        System.out.println("1-Código (ID) | 2-Titulo");
+        System.out.println("1-Código (ID) | 2-Titulo"); 
         int escolha = sc.nextInt();
         
         if(escolha == 1){
@@ -106,4 +244,6 @@ public class Services {
         }
     }
     
+   
 }
+
