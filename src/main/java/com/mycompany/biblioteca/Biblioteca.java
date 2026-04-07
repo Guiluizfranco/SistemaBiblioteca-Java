@@ -8,7 +8,7 @@ package com.mycompany.biblioteca;
  *
  * @author guil_dev
  */
-import java.util.Scanner;
+import java.util.*;
 
 public class Biblioteca {
 
@@ -29,6 +29,7 @@ public class Biblioteca {
             
             switch (op){
                 case 1:
+                    
                  boolean loopBreak1 = false;
                  boolean validacao1 = true;
                  while(validacao1){
@@ -39,11 +40,29 @@ public class Biblioteca {
                   int op1 = sc.nextInt();  
                   
                   if(op1 == 1){
-                    service.CadastrarLivro();
+                      
+                      try{
+                          service.CadastrarLivro();
+                      }catch(NumberFormatException e){
+                          System.out.println("Insira um número válido");
+                      }
+                    
                  }else if(op1 == 2){
-                    service.ListarLivros();
+                     
+                     try{
+                         service.ListarLivros();
+                     }catch(NumberFormatException e){
+                         System.out.println("Insira um número válido");
+                     }
+                    
                  }else if(op1 == 3){
-                    service.BuscarLivros();
+                     
+                     try{
+                         service.BuscarLivros();
+                     }catch(NumberFormatException e){
+                         System.out.println("Insira um valor válido");
+                     }
+                    
                  }else if (op1 == 4){
                      loopBreak1 = true;
                      break;
@@ -55,6 +74,7 @@ public class Biblioteca {
                  break;
                  
                 case 2:
+                    
                  boolean loopBreak2 = false;
                  boolean validacao2 = true;
                  while(validacao2){
@@ -78,13 +98,16 @@ public class Biblioteca {
                  }
                   if(loopBreak) break;
                  } 
+                 
+                 break;
                    
                 case 3:
+                    
                  boolean loopBreak3 = false;
                  boolean validacao3 = true;
                  while(validacao3){
                  System.out.println("\n1- Emprestar livro");
-                 System.out.println("\n2- Devolver livrp");
+                 System.out.println("\n2- Devolver livro");
                  System.out.println("\n3- Voltar");
                  int op3 = sc.nextInt();  
                  
@@ -102,8 +125,10 @@ public class Biblioteca {
                   if(loopBreak) break;
                  } 
                  
+                 break;
                  
                 case 4: 
+                    
                     loopBreak = true;
                     break;
                 

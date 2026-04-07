@@ -16,12 +16,13 @@ public class Services {
     Scanner sc = new Scanner(System.in);
     
     public void CadastrarLivro(){
+           
         
            System.out.println("Insira o código (ID) do livro: ");
-           int id = sc.nextInt();
+           String idString = sc.nextLine();
+           int id = Integer.parseInt(idString);
 
            System.out.println("\nInsira o titulo do livro: ");
-           String clear = sc.nextLine();
            String Titulo = sc.nextLine();
            
            System.out.println("\nInsira o genero do livro: ");
@@ -34,24 +35,18 @@ public class Services {
            String Editora = sc.nextLine();
            
            System.out.println("\nInsira o ano de publicação do livro: ");
-           int Ano = sc.nextInt();
-           clear = sc.nextLine();
+           String AnoString = sc.nextLine();
+       
+           int Ano = Integer.parseInt(AnoString);
+           
+           Model.Livros Livro = new Model().new Livros(id, Titulo, Genero, Autor, Editora, Ano);
+           instancia.salvarLivro(Livro);
            
            
+            System.out.println(Livro);
            
-           
-           
-           Model.Livros Objeto = new Model().new Livros(id, Titulo, Genero, Autor, Editora, Ano);
-           instancia.salvarLivro(Objeto);
-           
-           
-            System.out.println(Objeto);
-          
-    }
-    
-    public void ImprimirObjeto(){
-        
-    } 
+        }
+      
     
     public void ListarLivros(){
         boolean controle = false;
@@ -59,9 +54,11 @@ public class Services {
         System.out.println("\n| Titulo | Genero | Autor | Editora | Ano |");
         String escolha = sc.nextLine();
         
-        switch (escolha){
+        String escolhaMinuscula = escolha.toLowerCase();
+        
+        switch (escolhaMinuscula){
             
-            case "Titulo":
+            case "titulo":
                 
                 System.out.println("Insira o titulo: ");
                 String Titulo = sc.nextLine();
@@ -85,7 +82,7 @@ public class Services {
                 
                 break;
                 
-            case "Genero":
+            case "genero":
                 
                 System.out.println("Insira o genero: ");
                 String Genero = sc.nextLine();
@@ -110,7 +107,7 @@ public class Services {
                
                break;
                
-            case "Autor":
+            case "autor":
                 
                 System.out.println("Insira o autor: ");
                 String Autor = sc.nextLine();
@@ -135,7 +132,7 @@ public class Services {
                
                break;
                
-            case "Editora":
+            case "editora":
                 System.out.println("Insira o editor(a): ");
                 String Editora = sc.nextLine();
                 
@@ -158,10 +155,12 @@ public class Services {
                 }
                 break;
                
-            case "Ano":
+            case "ano":
                 
                 System.out.println("Insira o ano: ");
-                int Ano = sc.nextInt();
+                String AnoString = sc.nextLine();
+                
+                int Ano = Integer.parseInt(AnoString);
                 
                for (int i = 0; i < instancia.listaLivro.size(); i++){
                     int Valor = instancia.listaLivro.get(i).getAno();
@@ -193,11 +192,14 @@ public class Services {
     public void BuscarLivros(){
         System.out.println("Como deseja buscar o livro: ");
         System.out.println("1-Código (ID) | 2-Titulo"); 
-        int escolha = sc.nextInt();
+        String escolhaString = sc.nextLine();
+        
+        int escolha = Integer.parseInt(escolhaString);
         
         if(escolha == 1){
             System.out.println("Digite o código do livro: ");
             int Codigo = sc.nextInt();
+            
             boolean controle = false;
             
             for (int i = 0; i < instancia.listaLivro.size(); i++){
@@ -246,4 +248,5 @@ public class Services {
     
    
 }
+
 
