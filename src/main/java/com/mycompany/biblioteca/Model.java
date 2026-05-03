@@ -66,11 +66,32 @@ public class Model {
         
         public Usuarios(int idFuncionario, String username, String nomeCompleto, String email, String senha, String cargo){
             this.idFuncionario = idFuncionario;
-            this.nomeCompleto = nomeCompleto;
             this.username = username;
+            this.nomeCompleto = nomeCompleto;
             this.email = email;
             this.senha = senha;
             this.cargo = cargo;
+        }
+        
+        public String getUsername(){
+            return username;
+        };
+        public String getNomeCompleto(){
+            return nomeCompleto;
+        };
+        public String getEmail(){
+            return email;
+        };
+        public String getSenha(){
+            return senha;
+        };
+        public String getCargo(){
+            return cargo;
+        };
+        
+        @Override
+        public String toString(){
+            return "Livro{ " + idFuncionario + ", " + username + ", " + nomeCompleto + ", " + email + ", " + senha + ", " + cargo + " }";
         }
     }
 }

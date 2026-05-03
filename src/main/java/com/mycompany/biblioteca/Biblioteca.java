@@ -193,7 +193,116 @@ public class Biblioteca {
                 }
                 break;
             case 2:
-                System.out.println("Funcionalidade em andamento");
+                
+                boolean validacaoUsuario = true;
+                
+                while(validacaoUsuario){
+                  System.out.println("\n1- Cadastrar Usuario");
+                  System.out.println("\n2- Listar Usuario");
+                  System.out.println("\n3- Buscar Usuario");
+                  System.out.println("\n4- Voltar");
+                  int opUsuario = sc.nextInt(); 
+                  sc.nextLine();
+                  
+                  switch (opUsuario){
+                     
+                      case 1:
+                          try{
+                          System.out.println("Insira o código (ID) do usuário: ");
+                          String idString = sc.nextLine();
+                          
+                          int id = Integer.parseInt(idString);
+                          
+                          System.out.println("\nInsira o nome do usuario: ");
+                          String User = sc.nextLine();
+                          
+                          System.out.println("\nInsira o nome completo do usuario: ");
+                          String Nome = sc.nextLine();
+                          
+                          System.out.println("\nInsira o e-mail do usuario: ");
+                          String Email = sc.nextLine();
+                          
+                          System.out.println("\nInsira o senha do usuario: ");
+                          String Senha = sc.nextLine();
+                          
+                          System.out.println("\nInsira o cargo do usuario: ");
+                          String Cargo = sc.nextLine();
+                          
+                          System.out.println(service.CadastraUsuario(id, User, Nome, Email, Senha, Cargo));
+                          
+                           }catch(NumberFormatException e){
+                               System.out.println("Insira um código válido");
+                           }
+                         break; 
+                      
+                      case 2:
+                         
+                         System.out.println("Escolha o filtro: ");
+                         System.out.println("\n| Username | Nome | Email | Cargo |");
+                         String opListar = sc.nextLine().toLowerCase();
+                         
+                         switch(opListar){
+                             
+                             case "username":
+                             System.out.println("Insira o nome de usuario: ");
+                             String valorUsername = sc.nextLine(); 
+                             
+                             if(service.ListaUsuario(opListar, valorUsername).isEmpty()){
+                             
+                              System.out.println("Nenhum nome de usuario encontrado!");
+                             }else{
+                               System.out.println(service.ListaUsuario(opListar, valorUsername));  
+                             }
+                             
+                              break;
+                             
+                             case "nome":
+                             System.out.println("Insira o nome completo de usuario: ");
+                             String valorNome = sc.nextLine(); 
+                             
+                             if(service.ListaUsuario(opListar, valorNome).isEmpty()){
+                             
+                              System.out.println("Nenhum usuario encontrado com esse nome!");
+                             }else{
+                               System.out.println(service.ListaUsuario(opListar, valorNome));  
+                             }
+                             
+                             break;
+                             
+                             case "email":
+                             System.out.println("Insira o e-mail usuario: ");
+                             String valorEmail = sc.nextLine(); 
+                             
+                             if(service.ListaUsuario(opListar, valorEmail).isEmpty()){
+                             
+                              System.out.println("Nenhum usuario encontrado com esse e-mail!");
+                             }else{
+                               System.out.println(service.ListaUsuario(opListar, valorEmail));  
+                             }
+                             
+                             break;
+                             
+                             case "cargo":
+                             System.out.println("Insira o cargo de usuario: ");
+                             String valorCargo = sc.nextLine(); 
+                             
+                             if(service.ListaUsuario(opListar, valorCargo).isEmpty()){
+                             
+                              System.out.println("Nenhum usuario encontrado com esse cargo!");
+                             }else{
+                               System.out.println(service.ListaUsuario(opListar, valorCargo));  
+                             }
+                             
+                             break;
+                             
+                         }
+                         
+                          break;
+                      case 4:
+                          validacaoUsuario = false;
+                          break;
+                  }
+                }
                 break;
                 
             case 3:

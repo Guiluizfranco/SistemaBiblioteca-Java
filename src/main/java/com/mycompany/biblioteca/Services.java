@@ -11,14 +11,13 @@ package com.mycompany.biblioteca;
 
 import java.util.*;
 public class Services {
-    Repository.LivroRepository instancia = new Repository(). new LivroRepository();
-    
-    Scanner sc = new Scanner(System.in);
+    Repository.LivroRepository instanciaLivro = new Repository(). new LivroRepository();
+    Repository.UsuarioRepository instanciaUsuario = new Repository(). new UsuarioRepository();
     
     public Model.Livros CadastrarLivro(int ID, String Titulo, String Genero, String Autor, String Editora, int Ano){
            
            Model.Livros Livro = new Model().new Livros(ID, Titulo, Genero, Autor, Editora, Ano);
-           instancia.salvarLivro(Livro);
+           instanciaLivro.salvarLivro(Livro);
            
            return Livro;
       
@@ -31,11 +30,11 @@ public class Services {
         switch (escolha){
             case "titulo":
              
-             for(int i = 0; i < instancia.listaLivro.size(); i++){
-             String valor = instancia.listaLivro.get(i).getTitulo();
+             for(int i = 0; i < instanciaLivro.listaLivro.size(); i++){
+             String valor = instanciaLivro.listaLivro.get(i).getTitulo();
              
              if(valor.equals(input)){
-                 livro = instancia.listaLivro.get(i);
+                 livro = instanciaLivro.listaLivro.get(i);
                  
                  listaImpressão.add(livro);
                  
@@ -46,11 +45,11 @@ public class Services {
              break;
             
             case "genero":
-            for(int i = 0; i < instancia.listaLivro.size(); i++){
-             String valor = instancia.listaLivro.get(i).getGenero();
+            for(int i = 0; i < instanciaLivro.listaLivro.size(); i++){
+             String valor = instanciaLivro.listaLivro.get(i).getGenero();
              
              if(valor.equals(input)){
-                 livro = instancia.listaLivro.get(i);
+                 livro = instanciaLivro.listaLivro.get(i);
                  
                  listaImpressão.add(livro);
                  
@@ -60,11 +59,11 @@ public class Services {
             
             case "autor":
                 
-             for(int i = 0; i < instancia.listaLivro.size(); i++){
-             String valor = instancia.listaLivro.get(i).getAutor();
+             for(int i = 0; i < instanciaLivro.listaLivro.size(); i++){
+             String valor = instanciaLivro.listaLivro.get(i).getAutor();
              
              if(valor.equals(input)){
-                 livro = instancia.listaLivro.get(i);
+                 livro = instanciaLivro.listaLivro.get(i);
                  
                  listaImpressão.add(livro);
                  
@@ -74,11 +73,11 @@ public class Services {
              
             case "editora":
              
-             for(int i = 0; i < instancia.listaLivro.size(); i++){
-             String valor = instancia.listaLivro.get(i).getEditora();
+             for(int i = 0; i < instanciaLivro.listaLivro.size(); i++){
+             String valor = instanciaLivro.listaLivro.get(i).getEditora();
              
              if(valor.equals(input)){
-                 livro = instancia.listaLivro.get(i);
+                 livro = instanciaLivro.listaLivro.get(i);
                  
                  listaImpressão.add(livro);
                  
@@ -88,13 +87,13 @@ public class Services {
              
             case "ano": 
                 
-             for(int i = 0; i < instancia.listaLivro.size(); i++){
-             int valor = instancia.listaLivro.get(i).getAno();
+             for(int i = 0; i < instanciaLivro.listaLivro.size(); i++){
+             int valor = instanciaLivro.listaLivro.get(i).getAno();
              
              int inputInt = Integer.parseInt(input);
              
              if(valor == inputInt){
-                 livro = instancia.listaLivro.get(i);
+                 livro = instanciaLivro.listaLivro.get(i);
                  
                  listaImpressão.add(livro);
                  
@@ -115,19 +114,107 @@ public class Services {
         ArrayList listaImpressão = new ArrayList();
         Model.Livros livro;
         
-        for(int i = 0; i < instancia.listaLivro.size(); i++){
+        for(int i = 0; i < instanciaLivro.listaLivro.size(); i++){
             
-            int valorID = instancia.listaLivro.get(i).getID();
+            int valorID = instanciaLivro.listaLivro.get(i).getID();
             
             if(valorID == Codigo){
                 
-                livro = instancia.listaLivro.get(i);
+                livro = instanciaLivro.listaLivro.get(i);
                 listaImpressão.add(livro);
             
             }  
         }
         
           return listaImpressão;
+    }
+    
+    public Model.Usuarios CadastraUsuario(int idFuncionario, String username, String nomeCompleto, String email, String senha, String cargo){
+        
+        Model.Usuarios Usuario = new Model(). new Usuarios(idFuncionario, username, nomeCompleto, email, senha, cargo);
+        
+        instanciaUsuario.salvarUsuario(Usuario);
+        
+        return Usuario;
+        
+    }
+    
+    public ArrayList ListaUsuario(String escolha, String input){
+        ArrayList<Model.Usuarios> listaImpressao = new ArrayList();
+        
+        switch(escolha){
+            case "username":
+            
+            for (int i = 0; i < instanciaUsuario.listaUsuario.size(); i++){
+            
+            String valor = instanciaUsuario.listaUsuario.get(i).getUsername();
+            
+            if(valor.equals(input)){ 
+               listaImpressao.add(instanciaUsuario.listaUsuario.get(i));
+            }
+            
+           }
+            break;
+            
+            case "nome":
+            
+            for (int i = 0; i < instanciaUsuario.listaUsuario.size(); i++){
+            
+            String valor = instanciaUsuario.listaUsuario.get(i).getNomeCompleto();
+            
+            if(valor.equals(input)){ 
+               listaImpressao.add(instanciaUsuario.listaUsuario.get(i));
+            }
+            
+           }
+            break;
+            
+            case "email":
+            
+            for (int i = 0; i < instanciaUsuario.listaUsuario.size(); i++){
+            
+            String valor = instanciaUsuario.listaUsuario.get(i).getEmail();
+            
+            if(valor.equals(input)){ 
+               listaImpressao.add(instanciaUsuario.listaUsuario.get(i));
+            }
+            
+           }
+            break;
+            
+            case "senha":
+            
+            for (int i = 0; i < instanciaUsuario.listaUsuario.size(); i++){
+            
+            String valor = instanciaUsuario.listaUsuario.get(i).getSenha();
+            
+            if(valor.equals(input)){ 
+               listaImpressao.add(instanciaUsuario.listaUsuario.get(i));
+            }
+            
+           }
+            break;
+            
+            case "cargo":
+            
+            for (int i = 0; i < instanciaUsuario.listaUsuario.size(); i++){
+            
+            String valor = instanciaUsuario.listaUsuario.get(i).getCargo();
+            
+            if(valor.equals(input)){ 
+               listaImpressao.add(instanciaUsuario.listaUsuario.get(i));
+            }
+            
+           }
+            break;
+            
+            
+            
+        }
+        
+        
+        return listaImpressao;
+        
     }
 }
     

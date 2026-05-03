@@ -20,6 +20,16 @@ public class Repository {
         public void salvarLivro(Model.Livros objeto){
             listaLivro.add(objeto);
         }
+        
 }
+    public class UsuarioRepository{
+        
+        ArrayList <Model.Usuarios> listaUsuario = new ArrayList<>();
+        
+        public void salvarUsuario(Model.Usuarios objeto){
+            listaUsuario.add(objeto);
+        }
+        
+    }
     
 }
