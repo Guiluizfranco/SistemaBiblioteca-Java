@@ -161,10 +161,11 @@ public class Biblioteca {
                          break;
                      
                       case 3:
-                          
+                          try{
                           System.out.println("Digite o código do livro: ");
-                          int Codigo = sc.nextInt();
-                          sc.nextLine();
+                          String CodigoString = sc.nextLine();
+                          
+                          int Codigo = Integer.parseInt(CodigoString);
                              
                           if(service.BuscarLivros(Codigo).isEmpty()){
                               
@@ -175,7 +176,9 @@ public class Biblioteca {
                              System.out.println(service.BuscarLivros(Codigo)); 
                                 
                           }
-                          
+                          }catch(NumberFormatException e){
+                              System.out.println("Insira um valor válido");
+                          }
                           break;
                           
                       case 4:
@@ -298,16 +301,41 @@ public class Biblioteca {
                          }
                          
                           break;
+                          
+                       case 3:
+                          
+                           try{
+                             System.out.println("\nDigite o código do usuário: ");
+                             String CodigoString = sc.nextLine();
+                             
+                             int Codigo = Integer.parseInt(CodigoString);
+                    
+                             if(service.BuscarUsuario(Codigo).isEmpty()){
+                        
+                                 System.out.print("Nenhum usuário encontrado");
+                        
+                             }else{
+                                 System.out.println(service.BuscarUsuario(Codigo));
+                             }
+                    
+                    
+                            }catch(NumberFormatException e){
+                                System.out.println("Insira um valor válido!");
+                            }
+                    
+                             break;
+                
                       case 4:
                           validacaoUsuario = false;
-                          break;
-                  }
+                           break;
+                         
+                  } 
                 }
-                break;
                 
             case 3:
-                System.out.println("Funcionalidade em andamento");
-                break;
+            System.out.println("Funcionalidade em andamento");
+            break;
+            
             case 4:
                 validacao = false;
                 break;

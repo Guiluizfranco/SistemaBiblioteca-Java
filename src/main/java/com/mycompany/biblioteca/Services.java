@@ -216,6 +216,24 @@ public class Services {
         return listaImpressao;
         
     }
+    
+    public ArrayList BuscarUsuario(int valorID){
+        
+        ArrayList<Model.Usuarios> listaImpressao = new ArrayList();
+        
+        for(int i = 0; i < instanciaUsuario.listaUsuario.size(); i++){
+            
+            int valorLista = instanciaUsuario.listaUsuario.get(i).getID();
+            
+            if(valorLista == valorID){
+                
+                listaImpressao.add(instanciaUsuario.listaUsuario.get(i));
+                
+            }
+            
+        }
+         return listaImpressao;
+    }
 }
     
    

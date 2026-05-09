@@ -73,6 +73,9 @@ public class Model {
             this.cargo = cargo;
         }
         
+        public int getID(){
+            return idFuncionario;
+        }        
         public String getUsername(){
             return username;
         };
