@@ -36,7 +36,8 @@ public class Biblioteca {
                   System.out.println("\n1- Cadastrar livro");
                   System.out.println("\n2- Listar livros");
                   System.out.println("\n3- Buscar livros");
-                  System.out.println("\n4- Voltar");
+                  System.out.println("\n4- Deletar livros");
+                  System.out.println("\n5- Voltar");
                   int opLivro = sc.nextInt(); 
                   sc.nextLine();
                   
@@ -180,8 +181,61 @@ public class Biblioteca {
                               System.out.println("Insira um valor válido");
                           }
                           break;
-                          
+                      
                       case 4:
+                          
+                          System.out.println("Insira qual das opções deseja escolher para exclusão");
+                          System.out.println("\n| ID | Titulo |");
+                          String opDeletar = sc.nextLine().toLowerCase();
+                          
+                          switch(opDeletar){
+                              
+                             case "id":
+                              
+                              try{
+                              System.out.println("Insira o código:");
+                              String valorString = sc.nextLine();
+                              
+                              int valor = Integer.parseInt(valorString);
+                              
+                              boolean teste = service.DeletarUsuario(opDeletar, valorString);
+                              
+                              if(teste){
+                                  System.out.println("Livro deletado");
+                              }else{
+                                  System.out.println("Livro não encontrado");
+                              }
+                             
+                              }catch(NumberFormatException e){
+                                  System.out.println("Insira uma opção válida");
+                              }
+                              
+                              break;
+                              
+                             case "titulo":
+                              
+                              System.out.println("Insira o titulo:");
+                              String valorString = sc.nextLine();
+                              
+                              boolean teste = service.DeletarUsuario(opDeletar, valorString);
+                              
+                              if(teste){
+                                  System.out.println("Livro deletado");
+                              }else{
+                                  System.out.println("Livro não encontrado");
+                              }
+                              
+                               break;
+                               
+                             default:
+                                 
+                                 System.out.println("Insira uma opção válida");
+                                 break;
+                          }
+                          
+                          break;
+                          
+                      case 5:
                           validacaoLivro = false;
                           
                           break;
@@ -203,7 +257,8 @@ public class Biblioteca {
                   System.out.println("\n1- Cadastrar Usuario");
                   System.out.println("\n2- Listar Usuario");
                   System.out.println("\n3- Buscar Usuario");
-                  System.out.println("\n4- Voltar");
+                  System.out.println("\n4- Deletar Usuario");
+                  System.out.println("\n5- Voltar");
                   int opUsuario = sc.nextInt(); 
                   sc.nextLine();
                   
@@ -298,6 +353,11 @@ public class Biblioteca {
                              
                              break;
                              
+                             default:
+                                 
+                                 System.out.println("Por favor, insira uma opção válida");
+                                 break;
+                             
                          }
                          
                           break;
@@ -324,12 +384,69 @@ public class Biblioteca {
                             }
                     
                              break;
-                
-                      case 4:
+                      
+                      case 4:       
+                             
+                          System.out.println("Insira qual das opções deseja escolher para exclusão");
+                          System.out.println("\n| ID | Nome |");
+                          String opDeletar = sc.nextLine().toLowerCase();
+                          
+                          switch(opDeletar){
+                              
+                             case "id":
+                              
+                              try{
+                              System.out.println("Insira o código:");
+                              String valorString = sc.nextLine();
+                              
+                              int valor = Integer.parseInt(valorString);
+                              
+                              boolean teste = service.DeletarUsuario(opDeletar, valorString);
+                              
+                              if(teste){
+                                  System.out.println("Usuario deletado");
+                              }else{
+                                  System.out.println("Usuario não encontrado");
+                              }
+                             
+                              }catch(NumberFormatException e){
+                                 System.out.println("Insira uma opção válida");
+                              }
+                              
+                              break;
+                              
+                             case "nome":
+                              
+                              
+                              System.out.println("Insira o nome:");
+                              String valorString = sc.nextLine();
+                              
+                              boolean teste = service.DeletarUsuario(opDeletar, valorString);
+                              
+                              if(teste){
+                                  System.out.println("Usuario deletado");
+                              }else{
+                                  System.out.println("Usuario não encontrado");
+                              }
+        
+                               break;
+                               
+                             default:
+                                 
+                                 System.out.println("Insira uma opção válida");
+                                 break;
+                          }
+                          
+                          break;
+                          
+                      case 5:
                           validacaoUsuario = false;
                            break;
                          
-                  } 
+                      default:
+                          System.out.println("Insira uma opção válida");
+                          break;    
+                         } 
                 }
                 
             case 3:
@@ -339,7 +456,9 @@ public class Biblioteca {
             case 4:
                 validacao = false;
                 break;
-                
+            
+            default:
+                System.out.println("Insira uma opção válida");
         }  
         
     }

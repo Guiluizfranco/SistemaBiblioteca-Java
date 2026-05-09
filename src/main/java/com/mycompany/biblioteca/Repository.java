@@ -20,6 +20,9 @@ public class Repository {
         public void salvarLivro(Model.Livros objeto){
             listaLivro.add(objeto);
         }
+        public void removerLivro(Model.Livros objeto){
+            listaLivro.remove(objeto);
+        }
         
 }
     public class UsuarioRepository{
@@ -28,6 +31,10 @@ public class Repository {
         
         public void salvarUsuario(Model.Usuarios objeto){
             listaUsuario.add(objeto);
+        }
+        
+        public void removerUsuario(Model.Usuarios objeto){
+            listaUsuario.remove(objeto);
         }
         
     }

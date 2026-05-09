@@ -129,6 +129,54 @@ public class Services {
           return listaImpressão;
     }
     
+    public boolean DeletarUsuario(String escolha, String input){
+        
+        boolean validacao = false;
+        
+        switch(escolha){
+            
+            case "id":
+            
+            for (int i = 0; i < instanciaLivro.listaLivro.size(); i++){
+            
+            int valor = instanciaLivro.listaLivro.get(i).getID();
+            
+            String valorString = Integer.toString(valor);
+            
+            if(valorString.equals(input)){ 
+               instanciaLivro.removerLivro(instanciaLivro.listaLivro.get(i));
+               
+               validacao = true;
+               
+            }
+            
+           }
+        
+            break;
+            
+            case "nome":
+            
+            for (int i = 0; i < instanciaLivro.listaLivro.size(); i++){
+            
+            String valor = instanciaLivro.listaLivro.get(i).getTitulo();
+            
+            if(valor.equals(input)){ 
+               instanciaLivro.removerLivro(instanciaLivro.listaLivro.get(i));
+               
+               validacao = true;
+               
+            }
+            
+           }
+            break;
+            
+            
+    }
+        
+        return validacao;
+        
+}
+    
     public Model.Usuarios CadastraUsuario(int idFuncionario, String username, String nomeCompleto, String email, String senha, String cargo){
         
         Model.Usuarios Usuario = new Model(). new Usuarios(idFuncionario, username, nomeCompleto, email, senha, cargo);
@@ -234,8 +282,55 @@ public class Services {
         }
          return listaImpressao;
     }
-}
     
+    public boolean DeletarLivros(String escolha, String input){
+        
+        boolean validacao = false;
+        
+        switch(escolha){
+            
+            case "id":
+            
+            for (int i = 0; i < instanciaUsuario.listaUsuario.size(); i++){
+            
+            int valor = instanciaUsuario.listaUsuario.get(i).getID();
+            
+            String valorString = Integer.toString(valor);
+            
+            if(valorString.equals(input)){ 
+               instanciaUsuario.removerUsuario(instanciaUsuario.listaUsuario.get(i));
+               
+               validacao = true;
+               
+            }
+            
+           }
+        
+            break;
+            
+            case "titulo":
+            
+            for (int i = 0; i < instanciaUsuario.listaUsuario.size(); i++){
+            
+            String valor = instanciaUsuario.listaUsuario.get(i).getUsername();
+            
+            if(valor.equals(input)){ 
+               instanciaUsuario.removerUsuario(instanciaUsuario.listaUsuario.get(i));
+               
+               validacao = true;
+               
+            }
+            
+           }
+            break;
+            
+            
+    }
+        
+        return validacao;
+        
+}
+}
    
 
 
